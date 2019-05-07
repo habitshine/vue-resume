@@ -1,0 +1,114 @@
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap-vue/src/index.scss';
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+body {
+    margin:0px;
+    padding:0px;
+    font-size: 16px;
+    line-height: 1.4em;
+    letter-spacing: 0.08em;
+    background-color: #f3f3f3;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+
+.hui-bg-block {
+    top: 0;
+    position: fixed;
+    z-index: -1;
+    &:first-child{
+        left:0
+    }
+    &:last-child{
+        right:0
+    }
+}
+
+.hui-sidebar {
+    -ms-flex-order: 0;
+    order: 0;
+    background: #99CCFF;
+    color: #fff;
+    padding: 1rem 1.5rem;
+}
+.hui-content {
+    padding:0px;
+    .hui-content__body{
+        margin-bottom: 1rem;
+        background: #fff;
+        .hui-content__main {
+            z-index: 3;
+            position: relative;
+            padding: 2rem;
+            & > h2{
+                font-size: 1.5em;
+                font-weight: normal;
+                margin-bottom: 1.571rem
+            }
+        }
+        &::last-child{
+            margin-bottom:0;
+        }
+    }
+}
+
+@media (min-width:768px) {
+    .hui-sidebar {
+        border-radius: 0.375rem;
+        box-shadow: 5px 5px 25px 0px rgba(46, 61, 73, 0.2);
+    }
+    .hui-content {
+        padding-top:1rem;
+        .hui-content__body{
+            z-index: 0;
+            position: relative;
+            &,&:before, &:after, .hui-content__main {
+                border-width: 1px;
+                border-style: solid;
+                background-color: #fff;
+                border-color: #e6e6e6;
+            }
+            &:before, &:after {
+                content: '';
+                width: 100%;
+                height: 100%;
+                position: absolute;
+            }
+            &:before {
+                top: 3px;
+                left: 3px;
+                z-index: 1;
+            }
+            &:after {
+                top: 6px;
+                left: 6px;
+                z-index: 0;
+            }
+            .hui-content__main {
+                z-index: 3;
+                position: relative;
+                padding: 2rem;
+            }
+        }
+    }
+    @supports ((position:-webkit-sticky) or (position:sticky)) {
+        .hui-sidebar{
+            position: -webkit-sticky;
+            position: sticky;
+            top: 1rem;
+            z-index: 1000;
+            height:100%;
+        }
+    }
+}
+
+@media (min-width:1200px) {
+    .hui-sidebar {
+        flex: 0 1 320px;
+    }
+}
